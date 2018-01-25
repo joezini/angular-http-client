@@ -23,8 +23,7 @@ export class DataStorageService {
     // });
 
     const req = new HttpRequest('PUT', 'https://ng-recipe-book-32a70.firebaseio.com/recipes.json', this.recipeService.getRecipes(), {
-      reportProgress: true,
-      params: new HttpParams().set('auth', token)
+      reportProgress: true
     });
     return this.httpClient.request(req);
   }
@@ -33,8 +32,7 @@ export class DataStorageService {
     const token = this.authService.getToken();
     this.httpClient.get<Recipe[]>('https://ng-recipe-book-32a70.firebaseio.com/recipes.json', {
       observe: 'body',
-      responseType: 'json',
-      params: new HttpParams().set('auth', token)
+      responseType: 'json'
     })
       .map(
         (recipes) => {
